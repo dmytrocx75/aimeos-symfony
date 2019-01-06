@@ -101,12 +101,14 @@ class CatalogControllerTest extends WebTestCase
 
 		$link = $crawler->filter( '.catalog-list .pagination .option-name' )->link();
 		$crawler = $client->click( $link );
+echo $client->getResponse()->getContent();
 
 		$link = $crawler->filter( '.catalog-list-items .product a:contains("Cafe Noire Cappuccino")' )->link();
 		$crawler = $client->click( $link );
 
 		$this->assertEquals( 1, $crawler->filter( '.catalog-detail' )->count() );
 		$this->assertEquals( 1, $crawler->filter( '.catalog-detail:contains("Cafe Noire Cappuccino")' )->count() );
+echo $client->getResponse()->getContent();
 
 		$link = $crawler->filter( '.catalog-stage-navigator a.next' )->link();
 		$crawler = $client->click( $link );
